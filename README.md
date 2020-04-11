@@ -1,7 +1,16 @@
-##### Tóm tắt
+### Tóm tắt
 ##### 1 [Một số ý tưởng về thiết kế hệ thống và quy trình người dùng ](#user)
 ###### 1.1 [Quản lý user và role](#user-role)
+###### 1.2 [Khóa tài khoản khi sai password](#blockage)
+###### 1.3 [Shortcut](#shortcut)
+###### 1.1 [Hệ thống field validation](#validation)
+
 ##### 2 [Một số kỹ thuật tham khảo](#techniques)  
+###### 2.1 [ValidateWrapper](#validate-wrapper)
+###### 2.2 [BaseButton](#basebutton)
+###### 2.3 [Field Validation](#field-validation)
+
+### Nội dung chính
 
 <a name="user"/>
 
@@ -17,12 +26,18 @@ Có 3 bảng chính là `User`, `ActionPoint` và `Role` và 2 bảng giữa là
 - Bảng `RoleAction` lưu Role A được làm hành động B và khi thực hiện A có cần confirm (nhập password) hay không (một role có thể làm nhiều hành động)
 - Bảng `UserRole` lưu User A có role là B (một user có thể có nhiều role)
 
+<a name="blockage"/>
+
 ##### 1.2 Khóa tài khoản khi sai password
 Khi user đăng nhập một tài khoản đang tồn tại (existing user) mà sai password N lần (N được hard-coded sẵn hoặc lưu database thì tùy thiết kế) thì sẽ bị khóa M phút
+
+<a name="shortcut"/>
 
 ##### 1.3 Shortcut
 Mỗi hành động `ActionPoint` hầu hết đều được đại diện bởi một button ở front-end, và button này cần có một short cut, VD: nút lưu cần có short cut là Ctrl-S
 Cụ thể kỹ thuật xem 2.3
+
+<a name="validation"/>
 
 ##### 1.4 Hệ thống field validation
 Ví dụ: khi có UI thêm một bệnh nhân vào database, các field cần được validate dựa vào một số điều kiện
@@ -39,6 +54,8 @@ Mỗi loại dữ liệu (VD Patient, User, Transaction, ...) đều có một "
 <a name="techniques"/>
 
 ### 2. Một số kỹ thuật tham khảo
+
+<a name="validate-wrapper"/>
 
 ##### 2.1 ValidateWrapper
 Mỗi hành động đều được gắn với một `ActionPoint`, trước khi hành động được thực hiện thì cần bắn API kiểm tra xem user đó có quyền thực hiện hành động đó hay không hoặc nếu được thực hiện thì có cần confirm (nhập password) hay không
@@ -84,7 +101,10 @@ Cách dùng
     <div>Xem chi tiết</div>
 </ValidateWrapper>
 ```
-##### 2.2 Base Button
+
+<a name="basebutton"/>
+
+##### 2.2 BaseButton
 Một hệ thống luôn có một loạt các button dùng để thực hiện hành động gì đó, các button này thường chỉ khác nhau ở title và hành động, ngoài ra mỗi button đều có thể có shortcut cho hành động của nó.
 VD: Xem trang http://link2.i3solution.net.au/
     - username: admin01
@@ -134,6 +154,8 @@ Sử dụng
 ```jsx
 <DeleteButton {...parameters....}/>
 ```
+
+<a name="field-validation"/>
 
 ##### 2.3 Field Validation
 Ở Link2.0 đã có sẵn các class để thực hiện chuyện này, tuy nhiên khi áp dụng sang Ehealth chưa chắc đã đảm bảo đầy đủ chức năng, vì vậy trong quá trình sử dụng gặp vấn đề gì thì chúng ta sẽ bàn thêm để mở rộng, hiện những class này đã ở Link2.0 nhưng sẽ public lên Nuget sớm
