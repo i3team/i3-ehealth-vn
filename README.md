@@ -8,6 +8,7 @@
 ### 1 Một số ý tưởng về thiết kế hệ thống và quy trình người dùng 
 
 <a name="user-role"/>
+
 ##### 1.1 Quản lý user và role
 Có 3 bảng chính là `User`, `ActionPoint` và `Role` và 2 bảng giữa là `RoleAction` và `UserRole`
 - Bảng `User` lưu thông tin user
