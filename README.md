@@ -1,11 +1,13 @@
 ##### Tóm tắt
-##### 1 [Một số ý tưởng về thiết kế hệ thống và quy trình người dùng ](#user)  
+##### 1 [Một số ý tưởng về thiết kế hệ thống và quy trình người dùng ](#user)
+###### 1.1 [Quản lý user và role](#user-role)
 ##### 2 [Một số kỹ thuật tham khảo](#techniques)  
 
 <a name="user"/>
 
 ### 1 Một số ý tưởng về thiết kế hệ thống và quy trình người dùng 
 
+<a name="user-role"/>
 ##### 1.1 Quản lý user và role
 Có 3 bảng chính là `User`, `ActionPoint` và `Role` và 2 bảng giữa là `RoleAction` và `UserRole`
 - Bảng `User` lưu thông tin user
@@ -253,3 +255,5 @@ void validatePatient(Patient model)
     bool typeValid = typeValidator.IsValid(model.Type, out message);
 }
 ```
+
+
