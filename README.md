@@ -97,8 +97,9 @@ Cách dùng
 <ValidateWrapper actionId={EActionPoint.Delete} onClick={this.delete}>
     <button color="red">Delete</button>
 </ValidateWrapper>
+// Những action không cần validate thì ko cần truyề vào ValidateWrapper
 <ValidateWrapper actionId={EActionPoint.ViewDetail} onClick={this.viewDetail}>
-    <div>Xem chi tiết</div>
+    <div onHover={this._onHover}>Xem chi tiết</div>
 </ValidateWrapper>
 ```
 
